@@ -72,6 +72,7 @@ abstract class BinaryLinkingTargetFactory implements RuleConfiguredTargetFactory
    * override and customize.
    */
   protected ExtraLinkArgs getExtraLinkArgs(RuleContext ruleContext) {
+    System.out.printf("\n\n!!!!!!!!!! Hello, target name is %s!!!!!!!!!!!!!! \n\n",ruleContext.getRule());
     return new ExtraLinkArgs();
   }
 
