@@ -40,6 +40,7 @@ import com.google.devtools.build.lib.rules.proto.ProtoSourcesProvider;
 import com.google.devtools.build.lib.rules.test.InstrumentedFilesProvider;
 import java.util.Map;
 import java.util.TreeMap;
+import com.google.devtools.build.lib.packages.BuildType;
 
 /**
  * Implementation for rules that link binaries.
@@ -72,9 +73,10 @@ abstract class BinaryLinkingTargetFactory implements RuleConfiguredTargetFactory
    * override and customize.
    */
   protected ExtraLinkArgs getExtraLinkArgs(RuleContext ruleContext) {
-    System.out.printf("\n\n!!!!!!!!!! Hello, target name is %s!!!!!!!!!!!!!! \n\n",ruleContext.getRule());
+    System.out.printf("\n\n!!!!!!!!!! Hello, library dependencies are %s!!!!!!!!!!!!!! \n\n",ruleContext.attributes().get("deps",BuildType.LABEL_LIST));
     return new ExtraLinkArgs();
   }
+  
 
   @VisibleForTesting
   static final String REQUIRES_AT_LEAST_ONE_LIBRARY_OR_SOURCE_FILE =
